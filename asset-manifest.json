@@ -1,15 +1,16 @@
 {
   "files": {
-    "main.css": "/GreenCheck/static/css/main.50a3272d.css",
-    "main.js": "/GreenCheck/static/js/main.e52feeda.js",
-    "static/js/453.f9b388fa.chunk.js": "/GreenCheck/static/js/453.f9b388fa.chunk.js",
-    "index.html": "/GreenCheck/index.html",
-    "main.50a3272d.css.map": "/GreenCheck/static/css/main.50a3272d.css.map",
-    "main.e52feeda.js.map": "/GreenCheck/static/js/main.e52feeda.js.map",
-    "453.f9b388fa.chunk.js.map": "/GreenCheck/static/js/453.f9b388fa.chunk.js.map"
+    "main.css": "/SixScore/static/css/main.7c081857.css",
+    "main.js": "/SixScore/static/js/main.946e484e.js",
+    "static/js/453.33a460a1.chunk.js": "/SixScore/static/js/453.33a460a1.chunk.js",
+    "static/media/logo.png": "/SixScore/static/media/logo.0701d5f18de123ad2a49.png",
+    "index.html": "/SixScore/index.html",
+    "main.7c081857.css.map": "/SixScore/static/css/main.7c081857.css.map",
+    "main.946e484e.js.map": "/SixScore/static/js/main.946e484e.js.map",
+    "453.33a460a1.chunk.js.map": "/SixScore/static/js/453.33a460a1.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.50a3272d.css",
-    "static/js/main.e52feeda.js"
+    "static/css/main.7c081857.css",
+    "static/js/main.946e484e.js"
   ]
 }
