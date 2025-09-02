@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/SixScore/static/css/main.72951c79.css",
-    "main.js": "/SixScore/static/js/main.bd55fc7f.js",
+    "main.css": "/SixScore/static/css/main.6b32a21e.css",
+    "main.js": "/SixScore/static/js/main.086e9365.js",
     "static/js/453.33a460a1.chunk.js": "/SixScore/static/js/453.33a460a1.chunk.js",
     "static/media/logo.png": "/SixScore/static/media/logo.0701d5f18de123ad2a49.png",
     "static/media/KaTeX_AMS-Regular.ttf": "/SixScore/static/media/KaTeX_AMS-Regular.853be92419a6c3766b9a.ttf",
@@ -45,6 +45,7 @@
     "static/media/KaTeX_SansSerif-Bold.woff2": "/SixScore/static/media/KaTeX_SansSerif-Bold.95591a929f0d32aa282a.woff2",
     "static/media/KaTeX_SansSerif-Italic.woff2": "/SixScore/static/media/KaTeX_SansSerif-Italic.7d393d382f3e7fb1c637.woff2",
     "static/media/KaTeX_Size2-Regular.ttf": "/SixScore/static/media/KaTeX_Size2-Regular.57f5c1837853986ea1db.ttf",
+    "static/media/tree.png": "/SixScore/static/media/tree.91bf5377ebae0ac20b53.png",
     "static/media/KaTeX_Fraktur-Bold.woff2": "/SixScore/static/media/KaTeX_Fraktur-Bold.931d67ea207ab37ee693.woff2",
     "static/media/KaTeX_Fraktur-Regular.woff2": "/SixScore/static/media/KaTeX_Fraktur-Regular.172d3529b26f8cedef6b.woff2",
     "static/media/KaTeX_Script-Regular.woff": "/SixScore/static/media/KaTeX_Script-Regular.073b3402d036714b4370.woff",
@@ -65,12 +66,12 @@
     "static/media/KaTeX_Size3-Regular.woff": "/SixScore/static/media/KaTeX_Size3-Regular.7947224e8a9914fa332b.woff",
     "static/media/KaTeX_Size3-Regular.woff2": "/SixScore/static/media/KaTeX_Size3-Regular.e1951519f6f0596f7356.woff2",
     "index.html": "/SixScore/index.html",
-    "main.72951c79.css.map": "/SixScore/static/css/main.72951c79.css.map",
-    "main.bd55fc7f.js.map": "/SixScore/static/js/main.bd55fc7f.js.map",
+    "main.6b32a21e.css.map": "/SixScore/static/css/main.6b32a21e.css.map",
+    "main.086e9365.js.map": "/SixScore/static/js/main.086e9365.js.map",
     "453.33a460a1.chunk.js.map": "/SixScore/static/js/453.33a460a1.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.72951c79.css",
-    "static/js/main.bd55fc7f.js"
+    "static/css/main.6b32a21e.css",
+    "static/js/main.086e9365.js"
   ]
 }
