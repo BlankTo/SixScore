@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/SixScore/static/css/main.1b51e2b6.css",
-    "main.js": "/SixScore/static/js/main.01e05cff.js",
+    "main.js": "/SixScore/static/js/main.10cc2150.js",
     "static/js/453.33a460a1.chunk.js": "/SixScore/static/js/453.33a460a1.chunk.js",
     "static/media/database.png": "/SixScore/static/media/database.ad82d48079e02bea4d7b.png",
     "static/media/hero.png": "/SixScore/static/media/hero.5d6253265a084a402a9f.png",
@@ -78,11 +78,11 @@
     "static/media/KaTeX_Size3-Regular.woff2": "/SixScore/static/media/KaTeX_Size3-Regular.e1951519f6f0596f7356.woff2",
     "index.html": "/SixScore/index.html",
     "main.1b51e2b6.css.map": "/SixScore/static/css/main.1b51e2b6.css.map",
-    "main.01e05cff.js.map": "/SixScore/static/js/main.01e05cff.js.map",
+    "main.10cc2150.js.map": "/SixScore/static/js/main.10cc2150.js.map",
     "453.33a460a1.chunk.js.map": "/SixScore/static/js/453.33a460a1.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.1b51e2b6.css",
-    "static/js/main.01e05cff.js"
+    "static/js/main.10cc2150.js"
   ]
 }
