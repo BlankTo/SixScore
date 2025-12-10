@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/SixScore/static/css/main.5204835b.css",
-    "main.js": "/SixScore/static/js/main.d5c82e03.js",
+    "main.css": "/SixScore/static/css/main.fcf186ed.css",
+    "main.js": "/SixScore/static/js/main.a38413b9.js",
     "static/js/453.33a460a1.chunk.js": "/SixScore/static/js/453.33a460a1.chunk.js",
     "static/media/database.png": "/SixScore/static/media/database.ad82d48079e02bea4d7b.png",
     "static/media/hero.png": "/SixScore/static/media/hero.5d6253265a084a402a9f.png",
@@ -77,12 +77,12 @@
     "static/media/KaTeX_Size3-Regular.woff": "/SixScore/static/media/KaTeX_Size3-Regular.7947224e8a9914fa332b.woff",
     "static/media/KaTeX_Size3-Regular.woff2": "/SixScore/static/media/KaTeX_Size3-Regular.e1951519f6f0596f7356.woff2",
     "index.html": "/SixScore/index.html",
-    "main.5204835b.css.map": "/SixScore/static/css/main.5204835b.css.map",
-    "main.d5c82e03.js.map": "/SixScore/static/js/main.d5c82e03.js.map",
+    "main.fcf186ed.css.map": "/SixScore/static/css/main.fcf186ed.css.map",
+    "main.a38413b9.js.map": "/SixScore/static/js/main.a38413b9.js.map",
     "453.33a460a1.chunk.js.map": "/SixScore/static/js/453.33a460a1.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.5204835b.css",
-    "static/js/main.d5c82e03.js"
+    "static/css/main.fcf186ed.css",
+    "static/js/main.a38413b9.js"
   ]
 }
