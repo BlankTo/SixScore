@@ -1,15 +1,14 @@
 {
   "files": {
-    "main.css": "/SixScore/static/css/main.3a92e006.css",
-    "main.js": "/SixScore/static/js/main.5895f17f.js",
+    "main.css": "/SixScore/static/css/main.0f264c8f.css",
+    "main.js": "/SixScore/static/js/main.c0be2dfe.js",
     "static/js/453.33a460a1.chunk.js": "/SixScore/static/js/453.33a460a1.chunk.js",
     "static/media/database.png": "/SixScore/static/media/database.ad82d48079e02bea4d7b.png",
     "static/media/hero.png": "/SixScore/static/media/hero.5d6253265a084a402a9f.png",
-    "static/media/logo.png": "/SixScore/static/media/logo.0701d5f18de123ad2a49.png",
+    "static/media/images.png": "/SixScore/static/media/images.5157270d94fd672fab05.png",
     "static/media/KaTeX_AMS-Regular.ttf": "/SixScore/static/media/KaTeX_AMS-Regular.853be92419a6c3766b9a.ttf",
     "static/media/KaTeX_Main-Regular.ttf": "/SixScore/static/media/KaTeX_Main-Regular.9eba1d77abcf2aa6e94e.ttf",
     "static/media/KaTeX_Main-Bold.ttf": "/SixScore/static/media/KaTeX_Main-Bold.8169508bf58f8bd92ad8.ttf",
-    "static/media/images.png": "/SixScore/static/media/images.2000ed56c08a3eba250c.png",
     "static/media/KaTeX_Main-Italic.ttf": "/SixScore/static/media/KaTeX_Main-Italic.fa675e5e4bec9eb250b6.ttf",
     "static/media/KaTeX_AMS-Regular.woff": "/SixScore/static/media/KaTeX_AMS-Regular.d562e886c52f12660a41.woff",
     "static/media/KaTeX_Main-BoldItalic.ttf": "/SixScore/static/media/KaTeX_Main-BoldItalic.828abcb200061cffbaae.ttf",
@@ -39,6 +38,7 @@
     "static/media/KaTeX_Main-Italic.woff2": "/SixScore/static/media/KaTeX_Main-Italic.fe2176f79edaa716e621.woff2",
     "static/media/KaTeX_Main-BoldItalic.woff2": "/SixScore/static/media/KaTeX_Main-BoldItalic.20f389c4120be058d80a.woff2",
     "static/media/KaTeX_Script-Regular.ttf": "/SixScore/static/media/KaTeX_Script-Regular.fc9ba5249878cd8f8d88.ttf",
+    "static/media/SIX_colore_bianco.png": "/SixScore/static/media/SIX_colore_bianco.228a052cdbf77acf2eb5.png",
     "static/media/KaTeX_Math-Italic.woff2": "/SixScore/static/media/KaTeX_Math-Italic.6d3d25f4820d0da8f01f.woff2",
     "static/media/KaTeX_Math-BoldItalic.woff2": "/SixScore/static/media/KaTeX_Math-BoldItalic.dcbcbd93bac0470b462d.woff2",
     "static/media/KaTeX_Typewriter-Regular.woff": "/SixScore/static/media/KaTeX_Typewriter-Regular.4c6b94fd1d07f8beff7c.woff",
@@ -77,12 +77,12 @@
     "static/media/KaTeX_Size3-Regular.woff": "/SixScore/static/media/KaTeX_Size3-Regular.7947224e8a9914fa332b.woff",
     "static/media/KaTeX_Size3-Regular.woff2": "/SixScore/static/media/KaTeX_Size3-Regular.e1951519f6f0596f7356.woff2",
     "index.html": "/SixScore/index.html",
-    "main.3a92e006.css.map": "/SixScore/static/css/main.3a92e006.css.map",
-    "main.5895f17f.js.map": "/SixScore/static/js/main.5895f17f.js.map",
+    "main.0f264c8f.css.map": "/SixScore/static/css/main.0f264c8f.css.map",
+    "main.c0be2dfe.js.map": "/SixScore/static/js/main.c0be2dfe.js.map",
     "453.33a460a1.chunk.js.map": "/SixScore/static/js/453.33a460a1.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3a92e006.css",
-    "static/js/main.5895f17f.js"
+    "static/css/main.0f264c8f.css",
+    "static/js/main.c0be2dfe.js"
   ]
 }
