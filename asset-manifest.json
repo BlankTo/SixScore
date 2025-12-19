@@ -1,12 +1,18 @@
 {
   "files": {
-    "main.css": "/SixScore/static/css/main.1b51e2b6.css",
-    "main.js": "/SixScore/static/js/main.eb634363.js",
+    "main.css": "/SixScore/static/css/main.6e6dd2b7.css",
+    "main.js": "/SixScore/static/js/main.983c24e7.js",
     "static/js/453.33a460a1.chunk.js": "/SixScore/static/js/453.33a460a1.chunk.js",
     "static/media/database.png": "/SixScore/static/media/database.ad82d48079e02bea4d7b.png",
     "static/media/hero.png": "/SixScore/static/media/hero.5d6253265a084a402a9f.png",
     "static/media/images.png": "/SixScore/static/media/images.5157270d94fd672fab05.png",
+    "static/media/Logo Process & Equipment.png": "/SixScore/static/media/Logo Process & Equipment.e18f3f031f5a6ca397d7.png",
     "static/media/KaTeX_AMS-Regular.ttf": "/SixScore/static/media/KaTeX_AMS-Regular.853be92419a6c3766b9a.ttf",
+    "static/media/Logo Product.png": "/SixScore/static/media/Logo Product.e3a452b0b02b9d62cfe4.png",
+    "static/media/Logo Extraction.png": "/SixScore/static/media/Logo Extraction.d357abf8e9e61aff596f.png",
+    "static/media/Logo S&A.png": "/SixScore/static/media/Logo S&A.b7d93540ec219ff7a175.png",
+    "static/media/Logo Raw Material.png": "/SixScore/static/media/Logo Raw Material.d36a142f8502a171fc1d.png",
+    "static/media/Logo Waste.png": "/SixScore/static/media/Logo Waste.5bd5d057814c0199be83.png",
     "static/media/KaTeX_Main-Regular.ttf": "/SixScore/static/media/KaTeX_Main-Regular.9eba1d77abcf2aa6e94e.ttf",
     "static/media/KaTeX_Main-Bold.ttf": "/SixScore/static/media/KaTeX_Main-Bold.8169508bf58f8bd92ad8.ttf",
     "static/media/KaTeX_Main-Italic.ttf": "/SixScore/static/media/KaTeX_Main-Italic.fa675e5e4bec9eb250b6.ttf",
@@ -77,12 +83,12 @@
     "static/media/KaTeX_Size3-Regular.woff": "/SixScore/static/media/KaTeX_Size3-Regular.7947224e8a9914fa332b.woff",
     "static/media/KaTeX_Size3-Regular.woff2": "/SixScore/static/media/KaTeX_Size3-Regular.e1951519f6f0596f7356.woff2",
     "index.html": "/SixScore/index.html",
-    "main.1b51e2b6.css.map": "/SixScore/static/css/main.1b51e2b6.css.map",
-    "main.eb634363.js.map": "/SixScore/static/js/main.eb634363.js.map",
+    "main.6e6dd2b7.css.map": "/SixScore/static/css/main.6e6dd2b7.css.map",
+    "main.983c24e7.js.map": "/SixScore/static/js/main.983c24e7.js.map",
     "453.33a460a1.chunk.js.map": "/SixScore/static/js/453.33a460a1.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.1b51e2b6.css",
-    "static/js/main.eb634363.js"
+    "static/css/main.6e6dd2b7.css",
+    "static/js/main.983c24e7.js"
   ]
 }
