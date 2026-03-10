@@ -1,19 +1,19 @@
 {
   "files": {
     "main.css": "/SixScore/static/css/main.19d12e9d.css",
-    "main.js": "/SixScore/static/js/main.b23c947b.js",
+    "main.js": "/SixScore/static/js/main.60f284d4.js",
     "static/js/453.33a460a1.chunk.js": "/SixScore/static/js/453.33a460a1.chunk.js",
     "static/media/hero.avif": "/SixScore/static/media/hero.dc894d99105f20d36af5.avif",
     "static/media/database.avif": "/SixScore/static/media/database.477a5c18b72ed657f842.avif",
-    "static/media/Logo Process & Equipment.png": "/SixScore/static/media/Logo Process & Equipment.e18f3f031f5a6ca397d7.png",
     "static/media/KaTeX_AMS-Regular.ttf": "/SixScore/static/media/KaTeX_AMS-Regular.853be92419a6c3766b9a.ttf",
-    "static/media/Logo Product.png": "/SixScore/static/media/Logo Product.e3a452b0b02b9d62cfe4.png",
-    "static/media/Logo Extraction.png": "/SixScore/static/media/Logo Extraction.d357abf8e9e61aff596f.png",
-    "static/media/Logo S&A.png": "/SixScore/static/media/Logo S&A.b7d93540ec219ff7a175.png",
-    "static/media/Logo Raw Material.png": "/SixScore/static/media/Logo Raw Material.d36a142f8502a171fc1d.png",
-    "static/media/Logo Waste.png": "/SixScore/static/media/Logo Waste.5bd5d057814c0199be83.png",
+    "static/media/Logo Process & Equipment.png": "/SixScore/static/media/Logo Process & Equipment.cfa3b296be2fa8d464e1.png",
+    "static/media/Logo Product.png": "/SixScore/static/media/Logo Product.578b27e22a4104f1ecf2.png",
+    "static/media/Logo Raw Material.png": "/SixScore/static/media/Logo Raw Material.86799588e545bae08d6d.png",
     "static/media/KaTeX_Main-Regular.ttf": "/SixScore/static/media/KaTeX_Main-Regular.9eba1d77abcf2aa6e94e.ttf",
+    "static/media/Logo S&A.png": "/SixScore/static/media/Logo S&A.5328754b078d311778af.png",
+    "static/media/Logo Extraction.png": "/SixScore/static/media/Logo Extraction.783502c58e75b976df50.png",
     "static/media/KaTeX_Main-Bold.ttf": "/SixScore/static/media/KaTeX_Main-Bold.8169508bf58f8bd92ad8.ttf",
+    "static/media/Logo Waste.png": "/SixScore/static/media/Logo Waste.4b53ec3b81183d54122c.png",
     "static/media/KaTeX_Main-Italic.ttf": "/SixScore/static/media/KaTeX_Main-Italic.fa675e5e4bec9eb250b6.ttf",
     "static/media/KaTeX_AMS-Regular.woff": "/SixScore/static/media/KaTeX_AMS-Regular.d562e886c52f12660a41.woff",
     "static/media/KaTeX_Main-BoldItalic.ttf": "/SixScore/static/media/KaTeX_Main-BoldItalic.828abcb200061cffbaae.ttf",
@@ -84,11 +84,11 @@
     "static/media/KaTeX_Size3-Regular.woff2": "/SixScore/static/media/KaTeX_Size3-Regular.e1951519f6f0596f7356.woff2",
     "index.html": "/SixScore/index.html",
     "main.19d12e9d.css.map": "/SixScore/static/css/main.19d12e9d.css.map",
-    "main.b23c947b.js.map": "/SixScore/static/js/main.b23c947b.js.map",
+    "main.60f284d4.js.map": "/SixScore/static/js/main.60f284d4.js.map",
     "453.33a460a1.chunk.js.map": "/SixScore/static/js/453.33a460a1.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.19d12e9d.css",
-    "static/js/main.b23c947b.js"
+    "static/js/main.60f284d4.js"
   ]
 }
