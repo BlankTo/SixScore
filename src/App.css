@@ -1,38 +1,2508 @@
-.App {
-  text-align: center;
+
+/* Chrome, Safari, Edge, Opera */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
-.App-logo {
-  height: 40vmin;
+/* Firefox */
+input[type="number"] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+:root {
+  /* Layout vars (now all relative units) */
+  --header-h: 10vh;           /* height of the fixed titleBar */
+  --header-mh: 10vh;          /* min height of header, was 80px */
+  --sidebar-w: 0;             /* width of the fixed sidebar (currently unused) */
+  --sidebar-mw: 0;            /* min sidebar width, was 150px */
+  --sidebar-h: 30vh;
+  --sidebar-mh: 30vh;
+
+  --header-offset: max(var(--header-h), var(--header-mh));
+  --sidebar-offset: max(var(--sidebar-w), var(--sidebar-mw));
+
+  /* footer height used to be clamp(50px, 15vh, 150px) */
+  --footer-height: clamp(8vh, 15vh, 22vh);
+
+  --hero-block-height: clamp(22rem, 85vh, 50rem);
+
+  /* Hero top offset */
+  --onethird_1_top: 15%;
+
+  /* Grid / hero helpers (used in prova_*) */
+  --gap: 3vw;
+  --pad: 2.5vw;
+  --radius: 1.5rem;
+  --bg-col: transparent;
+
+  --the-purple: #231E3A;
+  --the-green: #A6FC79;
+  --the-white: #F1FDFF;
+  --the-second-green: #448272;
+  --the-grey: #EDEDED;
+  --the-cyan: #E0EAEB;
+}
+
+html, body {
+  font-family: "Outfit", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+body * {
+  font-family: inherit;
+}
+
+
+
+/* ROOT PAGE WRAPPER */
+
+.allPage {
+  background-color: #ede8d0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  width: 100%;
+}
+
+/* TITLE BAR */
+
+.title {
+  color: var(--the-green);
+  font-size: 1.4rem;        /* was 23px */
+  flex: 3;
+  display: flex;
+  margin-top: 3vh;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+/* put this near the top of App.css */
+*, *::before, *::after { box-sizing: border-box; }
+
+/* TITLE BAR */
+.titleBar {
+  background-color: var(--the-purple);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--header-offset);
+  z-index: 1001;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 5vw;           /* left + right padding */
+  padding-left: 5vw;           /* left + right padding */
+  padding-right: 2vw;           /* left + right padding */
+}
+
+/* logo left */
+.title_logo {
+  flex: 0 0 auto;
+  margin-top: 0;
+  display: flex;
+  align-items: center;
+}
+
+/* buttons right */
+.titlecolumn {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin-top: 0;
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.35rem;
+
+  flex-wrap: wrap;          /* keeps them from going off-screen */
+}
+
+.titlecolcol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+
+
+/* Top navigation buttons */
+
+.btn-24 {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--the-white);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.btn-24::before,
+.btn-24::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 0.12rem;          /* ~2px */
+  background: var(--the-white);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.btn-24::before {
+  top: 0;
+  transform-origin: left;
+}
+
+.btn-24::after {
+  bottom: 0;
+  transform-origin: left;
+}
+
+.btn-24:hover::before,
+.btn-24:hover::after {
+  transform: scaleX(1);
+}
+
+.btn-24:focus {
+  outline: none;
+}
+
+/* LAYOUT BELOW TITLE BAR */
+
+.underPage {
+  flex: auto;
+  display: flex;
+}
+
+/* Sidebar (currently commented out in App.js) */
+
+.sidebar {
+  background-color: #dbd7ca;
+  position: fixed;
+  min-width: var(--sidebar-mw);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 0.5rem;      /* was 5px */
+  padding-right: 3vw;       /* was 50px */
+}
+
+.sidebar ul li {
+  margin-bottom: 0.8rem;    /* was 10px */
+}
+
+/* MAIN CONTENT AREA */
+
+.content {
+  margin-left: var(--sidebar-offset);
+  width: 100%;
+  /*padding-bottom: 6vh;      /* was 50px */
+}
+
+/* MAIN COLUMN TYPES (HOME / FORM / DB) */
+
+.contentColumn-home,
+.contentColumn-form,
+.contentColumn-submission {
+  padding-top: 3vh;          /* was 20px */
+  padding-bottom: 8vh;       /* was 75px */
+  line-height: 1.6;
+  margin-top: auto;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+  max-width: 90%;            /* was 900px max, now relative */
+}
+
+/* REPORT COLUMN */
+
+.contentColumn-report {
+  padding-top: 3vh;          /* was 20px */
+  padding-bottom: 8vh;       /* was 75px */
+  line-height: 1.6;
+  margin-top: auto;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+  position: relative;
+}
+
+.contentColumnTitle {
+  text-align: left;
+  margin-bottom: 3vh;        /* was 40px */
+}
+
+.contentColumnP {
+  text-align: left;
+  margin-bottom: 2vh;        /* was 25px */
+}
+
+.contentColumnButtonRow {
+  display: flex;
+  justify-content: center;
+  padding-top: 3vh;          /* was 20px */
+  gap: 2.5vw;                /* was 30px */
+}
+
+/* FOOTER */
+
+/*
+.footerBar {
+  flex: 2;
+  background-color: #065f27;
+  color: #fff;
+  border-top: 0.2rem solid #04481e;
+
+  height: var(--footer-height);
+  max-height: 25vh;
+
+  padding: 1.5vh 4vw;
+
+  display: flex;
+  justify-content: flex-start;
+  z-index: 1000;
+}
+
+.footerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 90vw;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.footerLogo {
+  height: 20vh;
+  object-fit: contain;
+  filter: invert(1);
+}
+
+.footerText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.orgName {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.footerText p {
+  margin: 0;
+  font-size: 0.95rem;
+}*/
+
+/* --- Footer: two equal columns --- */
+
+.footerBar {
+  flex: 2;
+  background-color: var(--the-purple);
+  color: #fff;
+  /*border-top: 3px solid #04481e;/**/
+  height: var(--footer-height);
+  /*max-height: 200px;/**/
+  /*padding: 10px 40px;/**/
+  display: flex;
+  justify-content: center;   /* center the 2-column block */
+  padding-top: 15vh;
+  padding-bottom: 15vh;
+  padding-left: 0vw;
+  padding-right: 0vw;
+}
+
+.footerContainer {
+  display: flex;
+  width: 100%;
+  max-width: 100%;         /* keep it from stretching too wide */
+  gap: 40px;
+}
+
+/* each column = half width */
+.footerCol {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* left column: vertical list of nav buttons */
+.footerCol-nav {
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0.2rem;/**/
+  padding-left: 10vw;
+}
+
+/* reuse header buttons but tweak for footer */
+.footer-nav-btn {
+  padding: 0.35rem 0;
+}
+
+/* right column: 3 empty rows */
+.footerCol-empty {
+  justify-content: space-evenly;
+}
+
+.footer-empty-row {
+  flex: 1 1 0;
+  width: 100%;
+  /* you can give them a min-height or border later if you want to see them */
+}
+
+.footerBar .btn-24 {
+  font-size: 2rem;      /* ↑ text size */
+  padding: 0.9rem 1.6rem; /* ↑ button size */
+  font-weight: 400;
+}
+
+/* Right footer column: socials + legal */
+
+/* right column: comment section */
+.footerCol-comment {
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0.8rem;
+  width: 100%;
+}
+
+.footer-comment-title {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+.footer-comment-textarea {
+  align-self: flex-start;
+  width: 70%;
+  margin-left: 0;
+}
+
+.footer-comment-button {
+  align-self: flex-start;
+  padding: 0.4rem 0.9rem;
+  border-radius: 0.4rem;
+  border: none;
+  background-color: var(--the-green);
+  color: #000;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.footer-comment-button:hover {
+  background-color: var(--the-second-green);
+}
+
+.footerCol-right {
+  justify-content: center;
+  align-items: stretch;
+  gap: 10vh;              /* space between socials block and legal block */
+}
+
+/* Social block */
+
+.footer-social {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+}
+
+.footer-section-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+/* Base style for text-only footer buttons (socials) */
+
+.footer-link-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 400;
+  cursor: pointer;
+  text-align: left;
+}
+
+.footer-link-btn:hover {
+  text-decoration: underline;
+}
+
+/* Legal links row */
+
+.footer-legal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  margin-top: 0.75rem;
+}
+
+.footer-legal-link {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 400;
+  cursor: pointer;
+  text-align: left;
+}
+
+.footer-legal-link:hover {
+  text-decoration: underline;
+}
+
+
+/* PRIVACY BUTTONS */
+
+.privacyButton {
+  padding-top: 0.35rem;     /* was 5px */
+  padding-left: 0;
+  cursor: pointer;
+  border: #065f27;
+  background-color: #065f27;
+  color: #ffffff;
+}
+
+.privacyButton:hover {
+  color: #000000;
+}
+
+.privacyButton2 {
+  padding-top: 0.35rem;     /* was 5px */
+  padding-left: 0;
+  cursor: pointer;
+  border: #4fab65;
+  background-color: #4fab65;
+  color: #000000;
+}
+
+.privacyButton2:hover {
+  color: #ffffff;
+}
+
+/* FORM SECTIONS */
+
+.section {
+  background-color: #4fab65;
+  border-radius: 0.6rem;    /* was 10px */
+  padding-top: 1.2vh;       /* was 10px */
+  padding-bottom: 0.8vh;    /* was 5px */
+  padding-left: 2%;         /* was 10px */
+  margin-bottom: 1.2vh;     /* was 10px */
+  display: flex;
+  flex-direction: column;
+}
+
+.sectionTitle {
+  flex: 3;
+  display: flex;
+}
+
+.clear-button-container {
+  flex: 1;
+  display: flex;
+}
+
+.clearButton {
+  margin: auto;
+}
+
+.questionContainer {
+  display: flex;
+  width: 100%;
+  padding-left: 2%;         /* was 10px */
+  padding-right: 2%;        /* was 10px */
+  margin-bottom: 1vh;       /* was 10px */
+  position: relative;
+}
+
+.circle {
+  width: 1.25rem;           /* was 20px */
+  height: 1.25rem;          /* was 20px */
+  border-radius: 50%;
+  display: inline-block;
+  margin-left: 0.6rem;      /* was 10px */
+}
+
+/* Raw Material card: one circle per field, on the FAR RIGHT */
+.rm-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;   /* text left, circle right */
+  margin-bottom: 0.6rem;
+}
+
+.rm-line-text {
+  flex: 1 1 auto;                   /* text takes remaining width */
+}
+
+/* customize the circles used in RM lines */
+.rm-line .rm-circle {
+  margin-left: 0.8rem;              /* space between text and circle */
+  margin-right: 0;                  /* override if something else sets it */
+  flex-shrink: 0;                   /* keep the circle size */
+}
+
+
+
+.question {
+  padding-right: 1%;        /* was 10px */
+}
+
+.answer {
+  border-radius: 0.3rem;    /* was 5px */
+}
+
+.measureUnit {
+  padding-left: 1%;         /* was 10px */
+}
+
+.asterisk {
+  color: red;
+  padding-left: 1%;         /* was 10px */
+}
+
+/* Big black button */
+
+.button5 {
+  /* was fixed 160x60px, now padding-based */
+  padding: 0.9rem 2.5rem;
+  font-size: 1rem;          /* was 16px */
+  font-weight: bold;
+  color: #fff;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 0.6rem;    /* was 10px */
+  text-align: center;
+  background-color: #0c0c0c;
+}
+
+.button5:hover {
+  animation: pulseAnimation 1s;
+}
+
+@keyframes pulseAnimation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* simple list reset */
+
+.lili {
+  list-style-type: none;
+}
+
+/* INPUT9 (Load CSV) */
+
+.input9 label {
+  display: inline-flex;
+  padding: 0.6rem 1.4rem;   /* was 10px 20px */
+  color: #fff;
+  font-weight: bold;
+  font-size: 1rem;          /* was 16px */
+  border-radius: 0.25rem;   /* was 4px */
+  cursor: pointer;
+  background: linear-gradient(to right, #07522a, #39e33c);
+  transition: all 0.4s ease-in-out;
+}
+
+.input9 label span svg {
+  width: 1.4rem;            /* was 22px */
+  height: 1.4rem;
+  margin-right: 0.8rem;     /* was 13px */
+  fill: white;
+}
+
+.input9 input {
+  display: none;
+}
+
+.input9 label:hover {
+  box-shadow: 0 0.25rem 0.6rem rgba(95, 3, 244, 0.5),
+              0 0.4rem 1.2rem rgba(167, 115, 250, 0.5); /* converted from px */
+}
+
+/* BUTTON CONTAINER ROW */
+
+.button-container-11 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+/* BUTTON-LOAD-CSV-CURRENT */
+
+.button-load-csv-current input {
+  display: none;
+}
+
+.button-load-csv-current label {
+  position: relative;
+  display: inline-flex;
+  cursor: pointer;
+  color: #000;
+  font-size: 1rem;          /* was 16px */
+  font-weight: bold;
+  border-radius: 0.4rem;    /* was 6px */
+  padding: 0.8rem 2rem;     /* was 13px 30px */
+  background-color: #9fd1a3;
+  transition: all 0.3s;
+  box-shadow: 0 0.4rem #82aa85; /* was 0 6px */
+}
+
+.button-load-csv-current label svg {
+  margin-left: 0.6rem;      /* was 10px */
+}
+
+/* INPUT13 / BUTTON13 (CSV, generic action buttons) */
+
+.input13 {
+  padding: 0.6rem;          /* was 10px */
+}
+
+.input13 input {
+  display: none;
+}
+
+.input13 label {
+  position: relative;
+  display: inline-flex;
+  cursor: pointer;
+  color: #000;
+  font-size: 1rem;          /* was 16px */
+  font-weight: bold;
+  border-radius: 0.4rem;    /* was 6px */
+  padding: 0.8rem 2rem;     /* was 13px 30px */
+  background-color: #9fd1a3;
+  transition: all 0.3s;
+  box-shadow: 0 0.4rem #82aa85; /* was 0 6px */
+}
+
+.input13 label svg {
+  margin-right: 0.6rem;     /* was 10px */
+}
+
+.input13 label:hover {
+  top: 0.15rem;             /* was 2px */
+  background-color: #82aa85;
+}
+
+.button13 {
+  margin: 0.6rem;           /* was 10px */
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #000;
+  font-size: 1rem;          /* was 16px */
+  font-weight: bold;
+  border-radius: 0.4rem;    /* was 6px */
+  padding: 0.8rem 2rem;     /* was 13px 30px */
+  background-color: #9fd1a3;
+  transition: all 0.3s;
+  box-shadow: 0 0.4rem #82aa85; /* was 0 6px */
+  border: none; /* important for <button> */
+}
+
+.button13 svg {
+  margin-right: 0.6rem;     /* was 10px */
+}
+
+.button13:hover {
+  top: 0.15rem;             /* was 2px */
+  background-color: #82aa85;
+}
+
+/* Comment textarea */
+
+.comment-text-area {
+  min-height: 3rem;         /* was 40px */
+  width: 90%;
+}
+
+/* LOADER "Loading..." */
+
+.loader1 {
+  color: #000;
+  font-size: 1.5rem;        /* was 24px */
+  font-weight: bold;
+}
+
+.loader1 .dot {
+  opacity: 0;
+  margin-left: 0.3rem;      /* was 5px */
+  animation: loader1-animation 1.5s infinite;
+}
+
+.loader1 .dot1 {
+  animation-delay: 0.5s;
+}
+
+.loader1 .dot2 {
+  animation-delay: 0.6s;
+}
+
+.loader1 .dot3 {
+  animation-delay: 0.7s;
+}
+
+@keyframes loader1-animation {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Toggles (toggle-9) */
+
+.toggle-container {
+  display: flex;
+  align-items: center;
+  margin-top: 0.35rem;      /* was 5px */
+  margin-left: auto;
+}
+
+.toggle-9 {
+  --size: 2rem;
+  --track-width: calc(var(--size) * 2.5);
+  --track-height: var(--size);
+  --color-off: #000;
+  --color-on: #4caf50;
+  --icon-color: white;
+
+  position: relative;
+  display: inline-block;
+  width: var(--track-width);
+  height: var(--track-height);
+}
+
+.toggle-9 input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-9 .slider {
+  position: absolute;
+  cursor: pointer;
+  top: -0.3rem;             /* was -5px */
+  left: 0;
+  right: -0.3rem;           /* was -5px */
+  bottom: 0;
+  background-color: var(--color-off);
+  transition: background-color 0.3s;
+  border-radius: var(--track-height);
+  border: 0.06rem solid #000; /* was 1px */
+}
+
+.toggle-9 .slider::before {
+  content: "✕";
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--size);
+  height: var(--size);
+  left: 0.3rem;             /* was 5px */
+  top: 0;
+  font-size: calc(var(--size) * 0.8);
+  color: var(--icon-color);
+  transition: all 0.3s;
+}
+
+.toggle-9 input:checked + .slider {
+  box-shadow: 0 0 1.25rem #ffffff; /* was 20px */
+  background-color: var(--color-on);
+}
+
+.toggle-9 input:checked + .slider::before {
+  transform: translateX(calc(var(--track-width) - var(--size) - 0.6rem)); /* 10px -> 0.6rem */
+  content: "✔";
+}
+
+/* Z-index helper for buttons over hero image */
+
+.btn-z-high {
+  z-index: 1;
+}
+
+/* CLEAR SECTION BUTTON (button36) */
+
+.button36 {
+  color: #fff;
+  cursor: pointer;
+  font-size: 1rem;          /* was 16px */
+  font-weight: bold;
+  position: relative;
+  background-color: #000;
+  border: 0.06rem solid #000; /* was 1px */
+  transition: color 0.2s linear, box-shadow 0.3s linear,
+    background-color 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.button36:hover {
+  box-shadow: 0 0 6.8rem #d42b0d; /* was 110px */
+  color: #d42b0d;
+}
+
+.button36:before,
+.button36:after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  left: 50%;
+  width: 0%;
+  height: 0.12rem;          /* was 2px */
+  background-color: #ff3838;
+  transition: width, left, 250ms cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.button36:before {
+  top: -0.12rem;            /* was -2px */
+}
+
+.button36:after {
+  bottom: -0.12rem;         /* was -2px */
+}
+
+.button36:hover:before,
+.button36:hover:after {
+  width: 100%;
+  left: 0%;
+}
+
+/* INLINE TEXT HELPERS */
+
+.bold-inside {
+  font-size: 120%;
+  font-weight: bold;
+}
+
+.hhh1 {
+  margin-left: 5%;
+  font-size: 100%;
+}
+
+/* DOWNLOAD BUTTON & ICON */
+
+.download-button {
+  background-color: #013809;
+  border: none;
+  color: white;
+  padding: 0.75rem 2rem;    /* was 12px 30px */
+  cursor: pointer;
+  font-size: 1.25rem;       /* was 20px */
+  border-radius: 0.3rem;    /* was 5px */
+}
+
+.download-button:hover {
+  background-color: #00610f;
+}
+
+.Dbtndiv {
+  scale: 120%;
+  padding-top: 3%;
+  padding-right: 0.6rem;    /* was 10px */
+}
+
+/* CARD / BACKGROUND IMAGE / DEBUG */
+
+.card {
+  position: relative;
+  min-height: 40vh;         /* was 300px */
+}
+
+.bgImg {
+  position: absolute;
+  inset: 0;
+  width: 50vw;
+  top: 120vh;               /* was 1400px */
+  left: 20vw;               /* was 300px */
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+.debug0 {
+  flex: auto;
+  flex-direction: row;
+  color: #2c352f;
+  height: 100vh;
+}
+
+.debug1 {
+  flex: 1;
+  display: flex;
+  background-color: #04481e;
+}
+
+.debug2 {
+  flex: 2;
+  display: flex;
+  background-color: #89c29f;
+}
+
+/* HERO / PROVA (DEBUG=420) PAGE */
+
+.prova_page {
+  padding-top: var(--header-offset);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  position: relative;
+  background: var(--the-white);
+}
+
+/* HERO: background image under content */
+
+.prova_hero {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  /*aspect-ratio: 16 / 8;/**/
+  height: calc(var(--hero-block-height));
+  overflow: hidden;
+  z-index: 0;
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.prova_hero_image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: top center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* HERO CONTENT */
+
+.prova_content {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
+  /*gap: 5vh;/*var(--gap);/**/
+  /*padding: calc(var(--gap) * 0.75);/**/
+}
+
+.prova_row {
+  display: flex;
+  gap: 3vw/*var(--gap);/**/
+}
+
+.prova_content .prova_row:nth-child(1) {
+  align-items: stretch;
+}
+
+.prova_content .prova_row:nth-child(2) {
+  flex-direction: row-reverse;
+  align-items: stretch;
+  margin-top: 5vh;
+}
+
+.prova_content .prova_row:nth-child(3) {
+  align-items: stretch;
+  margin-top: 17vh;
+  gap: 1.2vw;
+}
+
+.prova_content .prova_row:nth-child(4) {
+  flex-direction: row-reverse;/**/
+  align-items: stretch;
+  margin-top: 20vh;
+  background-color: var(--the-second-green);
+  color: var(--the-white);
+}
+
+.prova_content .prova_row:nth-child(5) {
+  flex-direction: row-reverse;
+  align-items: stretch;
+}
+
+.prova_content .prova_row:nth-child(6) {
+  align-items: stretch;
+  margin-top: 20vh;
+  margin-bottom: 20vh;/**/
+}
+
+/* Columns */
+
+.prova_col {
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  /*padding: var(--pad);/**/
+  background: var(--bg-col);
+  border-radius: var(--radius);
+  min-height: 15vh;         /* was 120px */
+  box-sizing: border-box;
 }
 
-.App-link {
-  color: #61dafb;
+.prova_row_first {
+  height: var(--hero-block-height);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.prova_oneThird {
+  flex: 1 1 0;
+  background-color: transparent;
+}
+
+.prova_twoThird {
+  flex: 2 1 0;
+  background-color: transparent;
+}
+
+.prova_Half {
+  flex: 1 1 0;
+  background-color: transparent;
+}
+
+.prova_oneThird_1 {
+  /*margin-left: 2vw;/**/
+  margin-top: var(--onethird_1_top);
+  flex: 2 1 0;
+  background-color: transparent;
+  flex-direction: column;
+  align-items: flex-start;
+  color: var(--the-white);
+  padding-left: 5.6rem;
+}
+
+.prova_oneThird_1_title {
+  font-size: 4rem;
+  font-family: 'Open Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-weight: 400;
+  /*margin-left: 5.6rem;/**/
+}
+
+.border_bottom_card {
+  border-bottom: 0.2rem solid var(--the-purple);
+}
+
+.border_bottom_card_2 {
+  border-bottom: 0.1rem solid var(--the-grey);
+}
+
+.border_right_card {
+  border-right: 0.2rem solid var(--the-purple);
+}
+
+.prova_oneThird_1_title .sixscore-bold {
+  font-weight: 700;
+}
+
+.prova_oneThird_1_text {
+  font-size: 1.5rem;
+  /*margin-left: 5.6rem;/**/
+  margin-left: 0;/**/
+}
+
+.prova_oneThird_1_button {
+  padding-top: 1rem;
+  font-size: 2rem;
+  list-style-type: none;
+}
+
+.prova_twoThird_1 {
+  flex: 2 1 0;
+  background-color: transparent;
+}
+
+.prova_oneThird_2 {
+  margin-right: 2vw;
+  /*margin-top: var(--onethird_1_top);/**/
+  flex: 1 1 0;
+  background-color: transparent;
+  flex-direction: column;
+  color: #000000;
+}
+
+.prova_oneThird_2_title {
+  font-size: 4rem;
+  font-family: 'Open Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-weight: 500;
+  margin-right: 5.6rem;
+}
+
+.prova_oneThird_2_title .sixscore-bold {
+  font-weight: 700;
+}
+
+.prova_oneThird_2_text {
+  font-size: 1.5rem;
+  margin-right: 5.6rem;
+}
+
+/* --- Split left column into 3 equal-height blocks --- */
+
+.prova_col_split3container {
+  align-items: stretch;  /* let inner column stretch full height */
+  flex: 1.2 1 0;
+}
+
+.prova_col_split3 {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.prova_col_split3_item {
+  flex: 1 1 0;                 /* all three same height */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* or center if you prefer */
+  padding: 0.75rem 1rem;
+  padding-left: 5rem;
+}
+
+.prova_col_split3_item:first-child {
+  font-size: 1.4rem;  /* whatever you like */
+}
+
+/* Bottom block text */
+.prova_col_split3_item:last-child {
+  font-size: 1.5rem;    /* different size here */
+}
+
+/* Right column: six logos on the vertices of a hexagon */
+.prova_col_hexagon {
+  align-items: center;
+  justify-content: center;
+  padding-left: 0;
+  min-height: clamp(22rem, 46vw, 31rem);
+}
+
+.prova_hexagon {
+  --hex-radius: clamp(7rem, 12.8vw, 11.2rem);
+  --hex-cos30: 0.8660254;
+  --hex-step-x: calc(var(--hex-radius) * var(--hex-cos30));
+  --hex-step-y: calc(var(--hex-radius) * 0.5);
+  --hex-logo-size: clamp(6.8rem, 11.8vw, 8.8rem);
+
+  position: relative;
+  width: min(100%, 36rem);
+  min-height: clamp(20rem, 44vw, 28.5rem);
+}
+
+.prova_hex_item {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: var(--hex-logo-size);
+  height: var(--hex-logo-size);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.prova_hex_item_rm {
+  top: calc(50% - var(--hex-radius));
+}
+
+.prova_hex_item_sa {
+  left: calc(50% + var(--hex-step-x));
+  top: calc(50% - var(--hex-step-y));
+}
+
+.prova_hex_item_ex {
+  left: calc(50% + var(--hex-step-x));
+  top: calc(50% + var(--hex-step-y));
+}
+
+.prova_hex_item_pe {
+  top: calc(50% + var(--hex-radius));
+}
+
+.prova_hex_item_wa {
+  left: calc(50% - var(--hex-step-x));
+  top: calc(50% + var(--hex-step-y));
+}
+
+.prova_hex_item_pr {
+  left: calc(50% - var(--hex-step-x));
+  top: calc(50% - var(--hex-step-y));
+}
+
+.logo_section {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  display: block;
+  object-fit: contain;
+}
+
+.prova_col_split4container {
+  align-items: stretch;  /* let inner column stretch full height */
+}
+
+.prova_col_split4 {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.prova_col_split4_item {
+  flex: 1 1 0;                 /* all three same height */
+  /*display: flex;/**/
+  align-items: center;
+  justify-content: flex-start; /* or center if you prefer */
+  padding: 0.75rem 1rem;
+  padding-left: 5rem;
+}
+
+.prova_col_split4_item:first-child {
+  font-size: 4rem;  /* whatever you like */
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+/* Bottom block text */
+.prova_col_split4_item:last-child {
+  font-size: 4rem;    /* different size here */
+  padding-bottom: 7.5rem;
+}
+
+/* Fifth row: mini-hero with background image */
+.prova_row_5bg {
+  position: relative;
+  overflow: hidden;
+}
+
+/* override the row-reverse just for this row */
+.prova_content .prova_row.prova_row_5bg {
+  flex-direction: row;         /* so the second column is really the right half */
+}
+
+/* background image, like a hero but scoped to this row */
+.prova_row_5bg_img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* make sure the columns sit above the image */
+.prova_row_5bg .prova_col {
+  position: relative;
+  z-index: 1;
+  background: transparent;     /* let the image show behind */
+}
+
+/* text only in the second half, left-aligned, readable */
+.prova_row_5bg_text {
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 3rem;
+  color: var(--the-white);              /* tweak if the image is too light */
+  text-align: left;
+  margin-right: 10vw;
+  margin-left: 15vw;
+  margin-bottom: 5vh;
+}
+
+.row5-title {
+  font-size: 4rem;
+  font-weight: 500;
+}
+
+.row5-text {
+  font-size: 1.1rem;
+}
+
+
+.bold-in-text {
+  font-weight: 700;   /* or bold */
+}
+
+.row6 {
+  /* center the block inside the 1/3 column */
+  justify-content: center;      /* horizontal */
+  align-items: center;          /* vertical (already true via .prova_col, but explicit) */
+  margin-left: 5vw;
+  margin-right: 10vw;
+}
+
+.row6-inner {
+  text-align: left;             /* text starts from the left */
+}
+
+.row6-title {
+  font-size: 4rem;
+  font-weight: 500;
+}
+
+.row6-text {
+  font-size: 1.3rem;
+}
+
+.prova_half_img {
+  display: block;
+  margin-top: 10vh;/**/
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Checkbox used in consent (no original style, keep minimal) */
+.checkbox {
+  transform: scale(1.1);
+  margin-left: 0.5rem;
+}
+
+.prova_page_form {
+  padding-top: var(--header-offset);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  position: relative;
+  background: var(--the-cyan);
+}
+
+.prova_row_form {
+  display: flex;
+  gap: 3vw/*var(--gap);/**/
+}
+
+.prova_col_form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /*padding: var(--pad);/**/
+  background: var(--bg-col);
+  border-radius: var(--radius);
+  min-height: 15vh;         /* was 120px */
+  box-sizing: border-box;
+}
+
+.prova_Half_form {
+  flex: 1 1 0;
+  background-color: transparent;
+}
+
+.prova_OneThird_form {
+  flex: 1 1 0;
+  background-color: transparent;
+}
+
+.prova_TwoThird_form {
+  flex: 2 1 0;
+  background-color: transparent;
+}
+
+.prova_row_hero_form {
+  position: relative;
+  overflow: hidden;
+  flex-direction: row-reverse;
+}
+
+.prova_row_hero_report {
+  position: relative;
+  overflow: visible;
+  flex-direction: row-reverse;
+  height: 90vh;
+  margin-bottom: 20vh;
+}
+
+/* background image, like a hero but scoped to this row */
+.prova_row_hero_form_img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* make sure the columns sit above the image */
+.prova_row_hero_form .prova_col_form {
+  position: relative;
+  z-index: 1;
+  background: transparent;     /* let the image show behind */
+  height: 85vh;
+}
+
+/* text only in the second half, left-aligned, readable */
+.prova_row_hero_form_text {
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 3rem;
+  color: var(--the-white);              /* tweak if the image is too light */
+  text-align: left;
+  margin-right: 10vw;
+  /*margin-left: 15vw;/**/
+  margin-bottom: 5vh;
+}
+
+.hero_form_title {
+  font-size: 4rem;
+  font-weight: 500;
+  color: #000;
+}
+
+.hero_form_text {
+  font-size: 1.1rem;
+  color: #000;
+}
+
+/* --- Debug form card in case 420 --- */
+
+.debug-form-card_1 {
+  background: #ffffff;
+  border-radius: 1.5rem;          /* rounded edges for the rectangle */
+  padding-left: 3rem;
+  padding-right: 3rem;
+  padding-top: 3rem;
+  padding-bottom: 2rem;
+  /*box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);/**/
+  width: 70%;
+  /*max-width: 540px;              /* width of the rectangle */
+  margin-left: auto;              /* center horizontally in the row */
+  margin-right: auto;              /* center horizontally in the row */
+  margin-top: -5vh;
+  margin-bottom: 5vh;
+  display: flex;
+  z-index: 5;
+  flex-direction: column;
+}
+
+.debug-form-card_2 {
+  position: absolute;
+  /* 10vh from the top of the hero row, which itself starts after var(--header-offset) */
+  top: 5vh;
+  left: 50%;
+  transform: translateX(-50%);
+
+  background: #1B152E;
+  border-radius: 1.5rem;
+  padding: 3rem;
+  width: min(70%, 72rem);
+  height: 80vh;              /* gives meaning to the 1/4 + 3/4 split */
+
+  display: flex;
+  flex-direction: column;
+  z-index: 5;
+}
+
+.debug-form-card_3 {
+  position: absolute;
+  /* 10vh from the top of the hero row, which itself starts after var(--header-offset) */
+  top: 100vh;
+  left: 50%;
+  transform: translateX(-50%);
+
+  background: #1B152E;
+  border-radius: 1.5rem;
+  padding: 3rem;
+  width: min(70%, 72rem);
+  height: 80vh;              /* gives meaning to the 1/4 + 3/4 split */
+
+  display: flex;
+  flex-direction: column;
+  z-index: 5;
+}
+
+/* NEW: internal layout of the card */
+
+/* generic row container inside the card */
+.debug-card-row {
+  display: flex;
+  width: 100%;
+  gap: 2rem;
+}
+
+.label-with-dot {
+  display: flex;
+  align-items: flex-end;   /* allinea tutti in basso */
+  gap: 0.5rem;             /* spazio tra parola/linea/pallino */
+}
+
+/* Testo a sinistra */
+.label-text {
+  white-space: nowrap;      /* evita che vada a capo */
+}
+
+/* Linea in mezzo */
+.label-line {
+  flex: 1;                  /* si allunga a riempire lo spazio */
+  border-bottom: 2px solid #ccc;
+}
+
+/* Pallino a destra */
+.label-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+
+/* top row: 1/4 of the card height */
+.debug-card-row--top {
+  flex: 1;
+}
+
+/* bottom row: 3/4 of the card height */
+.debug-card-row--bottom {
+  flex: 5;
+  /*margin-top: 2rem;/**/
+}
+
+/* generic column style */
+.debug-card-col {
+  display: flex;
+  align-items: left;
+  justify-content: left;
+  color: #ffffff;
+}
+
+/* top row columns: 3 equal columns */
+.debug-card-col--third {
+  flex: 1 1 0;
+}
+
+/* bottom row columns: 2 equal columns */
+.debug-card-col--half_l {
+  flex: 2 1 0;
+  flex-direction: column;
+  align-items: stretch;   /* so form fields can stretch full width */
+}
+
+/* bottom row columns: 2 equal columns */
+.debug-card-col--half_r {
+  flex: 3 1 0;
+  flex-direction: column;
+  align-items: stretch;   /* so form fields can stretch full width */
+}
+
+
+.debug-form-card {
+  background: #ffffff;
+  border-radius: 1.5rem;          /* rounded edges for the rectangle */
+  padding-left: 3rem;
+  padding-right: 3rem;
+  padding-top: 2rem;
+  padding-bottom: 1.3rem;
+  /*box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);/**/
+  width: 70%;
+  /*max-width: 540px;              /* width of the rectangle */
+  margin-left: auto;              /* center horizontally in the row */
+  margin-right: auto;              /* center horizontally in the row */
+  margin-top: 1vh;
+  margin-bottom: 5vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Each question + input stacked vertically with space between them */
+.debug-form-field {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  margin-bottom: 1.25rem;        /* space between each question block */
+
+}
+
+.debug-form-field .question {
+  margin-bottom: 0.35rem;        /* space between label and input */
+}
+
+.debug_bold_inside {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.debug_form_answer {
+  padding: 1rem 1rem;
+  border-radius: 0.5rem;
+  border-width: 1px;
+  font-size: 1rem;
+}
+
+.debug_field_helper {
+  margin-top: 0.25rem;   /* space between textarea and text */
+  font-size: 0.75rem;    /* smaller font */
+  color: #666666;        /* softer color */
+  line-height: 1.2;
+}
+
+.debug_sectionTitle {
+  flex: 3;
+  display: flex;
+  
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.debug_sectionTitle_text {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.debug-form-field_2 {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  margin-bottom: 1.25rem;        /* space between each question block */
+
+}
+
+.debug-form-field_2 .question {
+  margin-bottom: 0.35rem;        /* space between label and input */
+}
+
+.debug_bold_inside_2 {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.debug_bold_inside_2_EX_title {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.debug_bold_inside_2_EX_question {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.debug_bold_inside_2_EX_question_unit {
+  font-size: 1rem;
+  font-weight: 300;
+  color: #575757;
+}
+
+.debug_bold_inside_2_WA_question_unit {
+  font-size: 1.3rem;
+  font-weight: 300;
+  color: #575757;
+}
+
+.debug_form_answer_2_SA {
+  height: 2rem;
+  width: 85%;
+  padding-left: 1rem;
+  border-radius: 10px;
+}
+
+select.debug_form_answer_2 {
+  /* hide the native arrow as much as possible */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  padding: 1rem 2.5rem 1rem 1rem;  /* extra right space for the arrow */
+  border-radius: 0.5rem;
+  border-width: 1px;
+  font-size: 1rem;
+  background-color: var(--the-white);
+
+  /* ▼ arrow (down) made with two gradients */
+  background-image:
+    linear-gradient(45deg, transparent 50%, #000 50%),
+    linear-gradient(-45deg, transparent 50%, #000 50%);
+  background-position:
+    calc(100% - 1.1rem) 50%,
+    calc(100% - 0.6rem) 50%;
+  background-size: 0.55rem 0.55rem, 0.55rem 0.55rem;
+  background-repeat: no-repeat;
+}
+
+
+/* Small circular toggle: off = grey, on = green */
+.toggle_debug {
+  position: relative;
+  display: inline-block;
+  width: 3.5rem;          /* pill width */
+  height: 1.75rem;         /* pill height */
+}
+
+/* hide the native checkbox */
+.toggle_debug input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* pill / track */
+.toggle_debug .slider {
+  position: absolute;
+  inset: 0;
+  cursor: pointer;
+  background-color: var(--the-grey);          /* OFF track color */
+  border-radius: 999px;               /* rounded rectangle */
+  border: 2px solid #000000;          /* 🔹 black border */
+  box-sizing: border-box;             /* so the border doesn't change size */
+  transition: background-color 0.25s ease;
+  padding: 0rem 1rem;
+}
+
+/* sliding ball */
+.toggle_debug .slider::before {
+  content: "";
+  position: absolute;
+  width: 40%;                        /* ball size */
+  height: 85%;
+  left: 6%;                          /* start near left edge */
+  top: 7.5%;                           /* vertically centered */
+  border-radius: 50%;
+  background-color: var(--the-purple);          /* ball color when OFF */
+  /*box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);/**/
+  transition: transform 0.25s ease, background-color 0.25s ease;
+}
+
+/* ON: track color */
+.toggle_debug input:checked + .slider {
+  background-color: var(--the-purple);          /* ON track color, tweak as you like */
+}
+
+/* ON: ball slides right + changes color */
+.toggle_debug input:checked + .slider::before {
+  transform: translateX(130%);        /* slide distance; adjust if needed */
+  background-color: var(--the-white);         /* ON ball color */
+}
+
+/* optional: focus ring when tabbed */
+/*.toggle_debug input:focus + .slider {
+  box-shadow: 0 0 0 2px rgba(46, 204, 113, 0.5);
+}/**/
+
+.debug-form-separator {
+  border-top: 1px solid #d4d4d4;  /* the line */
+  margin: 0.75rem 0 1rem;         /* space above/below it */
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+
+/* When the dropdown is open (or focused): square bottom edges of the top area */
+select.debug_form_answer_2:focus {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.picto-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* left cluster vs right toggle */
+  gap: 0.5rem;
+}
+
+/* left side: icon + name tightly together */
+.picto-left {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* you already had something like this */
+.picto-icon {
+  width: 3rem;
+  object-fit: contain;
+  display: block;
+}
+
+.picto-name {
+  font-size: 1rem;
+}
+
+/* optional, just to make the right side neat */
+.picto-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.SA_title {
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.btn-add {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+
+  width: 8rem;
+  height: 2.4rem;
+
+  background-color: #18a34a; /* green */
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;      /* pill shape */
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+
+  transition: background-color 0.15s ease, transform 0.1s ease;
+}
+
+.btn-add:hover {
+  background-color: #16a34a; /* slightly brighter green */
+  transform: translateY(-1px);
+}
+
+.btn-add:active {
+  transform: translateY(0);
+}
+
+/* left label */
+.btn-add-label {
+  white-space: nowrap;
+}
+
+/* right white square */
+.btn-add-icon {
+  width: 25%;
+  height: 100%;
+  border-radius: 6px;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* green "+" inside the square */
+.btn-add-plus {
+  color: #16a34a;
+  font-size: 1.1rem;
+  line-height: 1;
+  font-weight: 700;
+}
+
+.btn-remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+
+  width: 8rem;
+  height: 2.4rem;
+
+  background-color: #a33418; /* red */
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;      /* pill shape */
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+
+  transition: background-color 0.15s ease, transform 0.1s ease;
+}
+
+.btn-remove:hover {
+  background-color: #c73815; /* slightly brighter red */
+  transform: translateY(-1px);
+}
+
+.btn-remove:active {
+  transform: translateY(0);
+}
+
+/* left label */
+.btn-remove-label {
+  white-space: nowrap;
+}
+
+/* right white square */
+.btn-remove-icon {
+  width: 25%;
+  height: 100%;
+  border-radius: 6px;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* green "+" inside the square */
+.btn-remove-plus {
+  color: #a33418;
+  font-size: 1.1rem;
+  line-height: 1;
+  font-weight: 700;
+}
+
+/* details area for each solvent/additive card */
+.sa-details {
+  width: 70%;         /* ~2/3 of the card */
+  margin-left: auto;  /* push it to the right side */
+}
+
+/* make sure inner rows still stretch within that 2/3 block */
+.sa-details .debug-form-field_2 {
+  width: 100%;
+}
+
+.sa-header-right {
+  margin-left: auto;         /* push it to the right */
+  width: 70%;                /* same as .sa-details */
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* toggle in middle, button on far right */
+  gap: 0.75rem;
+}
+
+/* whole row: label left, options right */
+.signal-row {
+  display: flex;
+  flex-direction: row;     /* 👈 ADD THIS */
+  align-items: center;
+  justify-content: space-between; /* label left, options right */
+  gap: 1rem;
+}
+
+/* avoid extra vertical spacing just for this row */
+.signal-row .question {
+  margin-bottom: 0;
+}
+
+/* options: horizontal group on the right */
+.signal-options {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0;      /* important: no extra top margin that would push them down */
+}
+
+/* each option: dot + label */
+.signal-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+/* empty circle */
+.signal-dot {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 999px;
+  border: 2px solid #555;
+  box-sizing: border-box;
+}
+
+/* filled when selected */
+.signal-dot--selected {
+  background-color: var(--the-purple);   /* or your theme color */
+  border-color: var(--the-purple);
+}
+
+.signal-label {
+  font-size: 0.85rem;
+}
+
+.hazard-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* text left, toggle right */
+  gap: 1rem;
+}
+
+.debug-form-field_2.hazard-row {
+  display: flex;
+  flex-direction: row;      /* 👈 force row, override column */
+  align-items: center;
+  justify-content: space-between;  /* text left, toggle right */
+  gap: 1rem;
+}
+
+/* avoid extra vertical spacing on the label */
+.debug-form-field_2.hazard-row .question {
+  margin-bottom: 0;
+}
+
+.debug-form-field_2.amount-row {
+  display: flex;
+  flex-direction: row;        /* important: same-line label + input */
+  align-items: center;
+  justify-content: space-between;  /* label left, input right */
+  gap: 1rem;
+}
+
+/* avoid extra bottom margin on the label in this row */
+.debug-form-field_2.amount-row .question {
+  margin-bottom: 0;
+}
+
+.debug-form-field_2.amount-row .debug_form_answer_2 {
+  border-radius: 999px;   /* pill shape */
+  text-align: left;     /* center the number */
+  padding: 0.3rem 0.8rem;
+}
+
+.debug-form-field_2.amount-row-2 {
+  display: flex;
+  flex-direction: row;        /* important: same-line label + input */
+  align-items: center;
+  justify-content: space-between;  /* label left, input right */
+  gap: 1rem;
+}
+
+/* avoid extra bottom margin on the label in this row */
+.debug-form-field_2.amount-row-2 .question {
+  margin-bottom: 0;
+}
+
+.debug-form-field_2.amount-row-2 .debug_form_answer_2 {
+  border-radius: 999px;   /* pill shape */
+  text-align: center;     /* center the number */
+  padding: 0.3rem 0.8rem;
+}
+
+/* Chrome, Edge, Safari (WebKit) */
+input[type="number"].debug_form_answer_2::-webkit-inner-spin-button,
+input[type="number"].debug_form_answer_2::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"].debug_form_answer_2 {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+/* row: label left, input pill right (already have this) */
+.debug-form-field_2.amount-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.debug-form-field_2.amount-row-2 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.debug-form-field_2.amount-row .question {
+  margin-bottom: 0;
+}
+
+.debug-form-field_2.amount-row-2 .question {
+  margin-bottom: 0;
+}
+
+/* pill wrapper with prefix + input */
+.amount-input-wrapper {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  border: 1px solid #d4d4d4;
+  padding: 0.25rem 0.8rem;
+  background-color: #ffffff;
+}
+
+/* "1:" lives in a small, centered box on the left */
+.amount-prefix {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;      /* fixed width for the prefix area */
+  color: #9ca3af;
+  font-size: 0.9rem;
+  margin-left: 25%;
+  margin-right: 0;
+  margin-top: -2.75%;
+  text-align: center;
+}
+
+
+/* actual number input inside the pill */
+.amount-input {
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 4rem;         /* tweak as you like */
+  text-align: left;
+  padding: 0;
+}
+.amount-input-2 {
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 4rem;         /* tweak as you like */
+  text-align: center;
+  padding: 0;
+}
+.debug-form-field_2.amount-row-2 {
+  text-align: center;
+}
+
+/* hide arrows on these number inputs (WebKit) */
+input[type="number"].amount-input::-webkit-inner-spin-button,
+input[type="number"].amount-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"].amount-input-2::-webkit-inner-spin-button,
+input[type="number"].amount-input-2::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* hide arrows in Firefox */
+input[type="number"].amount-input {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+input[type="number"].amount-input-2 {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+.ex-subsection-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.ex-subsection-title {
+  flex: 0 0 33%;
+}
+
+.ex-subsection-body {
+  flex: 1;
+}
+
+.debug-form-field_2.ex-subsection-row {
+  display: flex;
+  flex-direction: row;      /* override the column from .debug-form-field_2 */
+  align-items: flex-start;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+/* left: 33% */
+.ex-subsection-title {
+  flex: 0 0 33%;
+  max-width: 33%;
+}
+
+/* right: 66% */
+.ex-subsection-body {
+  flex: 0 0 67%;
+  max-width: 67%;
+}
+
+.info-circle {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  border: 0.5px solid #555;/**/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  background-color: var(--the-grey);
+  color: var(--the-purple);
+  cursor: pointer;
+}
+
+.info-circle:hover {
+  color: var(--the-white);
+  background-color: var(--the-purple);
+}
+
+/* container for the rows inside each process card */
+.pe-details {
+  width: 66%;
+  margin-left: auto;      /* align with SA details */
+  margin-top: 5%;
+  margin-right: 10%;
+}
+
+/* each PE row: label left, fields right */
+.debug-form-field_2.pe-row {
+  display: flex;
+  flex-direction: row;    /* override column */
+  align-items: center;
+  justify-content: space-between;
+  gap: 0rem;
+  padding-bottom: 10%;
+}
+
+/* left: 33% */
+.pe-label {
+  flex: 0 0 33%;
+  max-width: 33%;
+  font-size: 1.5rem;
+}
+
+/* right: 66% */
+.pe-field {
+  flex: 0 0 67%;
+  max-width: 67%;
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* avoid vertical extra spacing on labels inside PE rows */
+.debug-form-field_2.pe-row .question {
+  margin-bottom: 0;
+}
+
+.PE_span {
+  padding-top: 3%;
+}
+
+.PE_drop {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: 1rem;
+}
+
+.present-label {
+  font-size: 0.85rem;
+  color: #888;              /* grey by default */
+  transition: color 0.2s ease;
+}
+
+.present-label--active {
+  color: #000;              /* black when selected */
+  font-weight: 600;         /* optional: make it a bit bolder */
+}
+
+.chart-button {
+  border: 1px solid #ffffff;
+  border-radius: 9999px;
+  padding: 0.45rem 1.4rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+
+  background-color: #6366f1; /* purple */
+  color: #ffffff;            /* white text */
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.1s ease;
+}
+
+.chart-button--outline {
+  background-color: #ffffff; /* white */
+  color: #6366f1;            /* purple text */
+}
+
+/* Hover: invert colors */
+.chart-button:hover {
+  background-color: #ffffff;
+  color: #6366f1;
+  transform: translateY(-1px);
+}
+
+.chart-button--outline:hover {
+  background-color: #6366f1;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.chart-button_2 {
+  border: 1px solid var(--the-purple);
+  border-radius: 9999px;
+  padding: 0.45rem 1.4rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+
+  background-color: #6366f1; /* purple */
+  color: #ffffff;            /* white text */
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.1s ease;
+}
+
+.chart-button_2--outline {
+  background-color: #ffffff; /* white */
+  color: #6366f1;            /* purple text */
+}
+
+/* Hover: invert colors */
+.chart-button_2:hover {
+  background-color: #ffffff;
+  color: #6366f1;
+  transform: translateY(-1px);
+}
+
+.chart-button_2--outline:hover {
+  background-color: #6366f1;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+/* Generic error state for inputs/selects when submit was tried */
+.debug_form_answer--error,
+.debug_form_answer_2--error,
+.debug_form_answer_2_SA--error,
+.amount-input-wrapper--error {
+  box-shadow: inset 0 0 0 2px #FD7280; /* same red as red_color in App.js */
+}
+
+
+.privacy-overlay{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.privacy-modal{
+  background: #fff;
+  width: min(900px, 100%);
+  max-height: 90vh;
+  overflow: auto;
+  border-radius: 16px;
+  padding: 1.5rem;
+}
+
+.privacy-modal-header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+
+/* RESPONSIVE ADJUSTMENTS */
+
+@media (max-width: 48rem) { /* ~768px */
+  .titleBar {
+    flex-direction: column;
+    padding-left: 4vw;
+    height: auto;
   }
-  to {
-    transform: rotate(360deg);
+
+  .title {
+    margin-top: 2vh;
+  }
+
+  .titlecolumn {
+    flex-wrap: wrap;
+    margin-top: 1.5vh;
+  }
+
+  .contentColumn-home,
+  .contentColumn-form,
+  .contentColumn-submission,
+  .contentColumn-report {
+    width: 90%;
+  }
+
+  .footerContainer {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .footerLogo {
+    height: 12vh;
+  }
+
+  .prova_row {
+    flex-direction: column;
+  }
+
+  .prova_content .prova_row:nth-child(even) {
+    flex-direction: column;
+  }
+
+  .prova_oneThird_1,
+  .prova_oneThird_2 {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .prova_oneThird_1_title,
+  .prova_oneThird_1_text,
+  .prova_oneThird_2_title,
+  .prova_oneThird_2_text {
+    margin-left: 0;
+    margin-right: 0;
+    text-align: left;
+  }
+
+  .prova_col_hexagon {
+    justify-content: center;
+    padding-left: 0;
+    min-height: clamp(15rem, 62vw, 20rem);
+  }
+
+  .prova_hexagon {
+    --hex-radius: clamp(5rem, 24vw, 7rem);
+    --hex-logo-size: clamp(4.8rem, 21vw, 6.2rem);
+    width: min(100%, 30rem);
+    min-height: clamp(15rem, 62vw, 20rem);
+  }
+
+  .logo_section {
+    width: 100%;
   }
 }
+
+/*-----------------------------------------------------------------------------*/
+

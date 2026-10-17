@@ -1,5 +1,6 @@
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
+import 'firebase/compat/app-check';
 
 const firebaseConfig = {
   apiKey: "AIzaSyB0WHiVa-WklF1ynL_yi63Pf0c92Stvit4",
@@ -13,5 +14,10 @@ const firebaseConfig = {
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
+
+firebase.appCheck().activate(
+  '6LcfaScsAAAAAPWRc3V31a2cJ42-tVLhfD7jkPgt', // <- from reCAPTCHA console
+  true // auto-refresh tokens
+);
 
 export const firestore = firebase.firestore();
