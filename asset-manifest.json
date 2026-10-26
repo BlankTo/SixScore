@@ -1,10 +1,11 @@
 {
   "files": {
-    "main.css": "/SixScore/static/css/main.3c1b4dc0.css",
-    "main.js": "/SixScore/static/js/main.c41b4d2b.js",
+    "main.css": "/SixScore/static/css/main.4997ece8.css",
+    "main.js": "/SixScore/static/js/main.d65685b3.js",
     "static/js/453.33a460a1.chunk.js": "/SixScore/static/js/453.33a460a1.chunk.js",
     "static/media/hero.avif": "/SixScore/static/media/hero.dc894d99105f20d36af5.avif",
     "static/media/database.avif": "/SixScore/static/media/database.477a5c18b72ed657f842.avif",
+    "static/media/community.png": "/SixScore/static/media/community.cc016de660041a97edac.png",
     "static/media/KaTeX_AMS-Regular.ttf": "/SixScore/static/media/KaTeX_AMS-Regular.853be92419a6c3766b9a.ttf",
     "static/media/KaTeX_Main-Regular.ttf": "/SixScore/static/media/KaTeX_Main-Regular.9eba1d77abcf2aa6e94e.ttf",
     "static/media/KaTeX_Main-Bold.ttf": "/SixScore/static/media/KaTeX_Main-Bold.8169508bf58f8bd92ad8.ttf",
@@ -83,12 +84,12 @@
     "static/media/ref_graph.avif": "/SixScore/static/media/ref_graph.96e80d5a5ddb7b5ba0e9.avif",
     "static/media/KaTeX_Size3-Regular.woff2": "/SixScore/static/media/KaTeX_Size3-Regular.e1951519f6f0596f7356.woff2",
     "index.html": "/SixScore/index.html",
-    "main.3c1b4dc0.css.map": "/SixScore/static/css/main.3c1b4dc0.css.map",
-    "main.c41b4d2b.js.map": "/SixScore/static/js/main.c41b4d2b.js.map",
+    "main.4997ece8.css.map": "/SixScore/static/css/main.4997ece8.css.map",
+    "main.d65685b3.js.map": "/SixScore/static/js/main.d65685b3.js.map",
     "453.33a460a1.chunk.js.map": "/SixScore/static/js/453.33a460a1.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3c1b4dc0.css",
-    "static/js/main.c41b4d2b.js"
+    "static/css/main.4997ece8.css",
+    "static/js/main.d65685b3.js"
   ]
 }
